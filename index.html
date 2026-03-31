@@ -20,8 +20,6 @@
       <nav class="main-nav">
         <a href="#inicio">Início</a>
         <a href="#produtos">Produtos</a>
-        <a href="#ofertas">Ofertas</a>
-        <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
         <a href="painel.html" class="nav-highlight">Painel</a>
       </nav>
@@ -30,90 +28,14 @@
 
   <main>
     <section class="hero-section" id="inicio">
-      <div class="container hero-grid">
+      <div class="container">
         <div class="hero-text">
           <span class="section-tag">Mercearia de bairro</span>
           <h2>Tudo o que você precisa para a sua casa, perto de você</h2>
           <p>
-            A Mercearia São José oferece produtos essenciais para o dia a dia,
-            com atendimento próximo, ambiente acolhedor e promoções que cabem no bolso.
+            Agora com produtos carregados dinamicamente usando JavaScript e PHP.
           </p>
-
-          <div class="hero-actions">
-            <a href="#produtos" class="btn btn-primary">Ver produtos</a>
-            <a href="#contato" class="btn btn-secondary">Falar conosco</a>
-          </div>
-
-          <div class="hero-info">
-            <div class="hero-info-card">
-              <strong>Seg a Sáb</strong>
-              <span>07h às 20h</span>
-            </div>
-            <div class="hero-info-card">
-              <strong>Entrega local</strong>
-              <span>Consulte pelo WhatsApp</span>
-            </div>
-            <div class="hero-info-card">
-              <strong>Ofertas da semana</strong>
-              <span>Preços especiais</span>
-            </div>
-          </div>
         </div>
-
-        <div class="hero-panel">
-          <div class="hero-panel-card">
-            <span class="card-label">Destaques da semana</span>
-            <ul class="featured-list">
-              <li>
-                <div>
-                  <strong>Arroz Tipo 1 - 5kg</strong>
-                  <span>Essencial para a sua compra</span>
-                </div>
-                <b>R$ 28,90</b>
-              </li>
-              <li>
-                <div>
-                  <strong>Feijão Carioca - 1kg</strong>
-                  <span>Produto selecionado</span>
-                </div>
-                <b>R$ 8,99</b>
-              </li>
-              <li>
-                <div>
-                  <strong>Óleo de Soja - 900ml</strong>
-                  <span>Oferta especial</span>
-                </div>
-                <b>R$ 7,49</b>
-              </li>
-              <li>
-                <div>
-                  <strong>Açúcar Refinado - 1kg</strong>
-                  <span>Preço de bairro</span>
-                </div>
-                <b>R$ 4,99</b>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="quick-section">
-      <div class="container quick-grid">
-        <article class="quick-card">
-          <h3>Produtos frescos</h3>
-          <p>Itens de mercearia, limpeza, bebidas e utilidades para sua rotina.</p>
-        </article>
-
-        <article class="quick-card">
-          <h3>Atendimento próximo</h3>
-          <p>Um comércio simples, confiável e sempre pronto para atender bem.</p>
-        </article>
-
-        <article class="quick-card">
-          <h3>Preço justo</h3>
-          <p>Promoções semanais e seleção de produtos com bom custo-benefício.</p>
-        </article>
       </div>
     </section>
 
@@ -121,246 +43,30 @@
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Produtos</span>
-          <h2>Itens populares da mercearia</h2>
-          <p>Uma seleção simples de produtos fixos para apresentar o site nesta primeira etapa.</p>
+          <h2>Itens disponíveis</h2>
+          <p>Os produtos abaixo são carregados dinamicamente do PHP.</p>
         </div>
 
-        <div class="product-grid">
-          <article class="product-card">
-            <div class="product-image">
-              <img
-                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 260'><rect width='400' height='260' rx='24' fill='%23f6ead7'/><rect x='120' y='40' width='160' height='180' rx='18' fill='%23fffaf2' stroke='%23d8c3a3' stroke-width='4'/><rect x='145' y='70' width='110' height='70' rx='10' fill='%23efe3cf'/><text x='200' y='112' text-anchor='middle' font-size='26' font-family='Arial' fill='%23704f1d' font-weight='700'>ARROZ</text><rect x='150' y='155' width='100' height='24' rx='12' fill='%23d79b44'/><text x='200' y='172' text-anchor='middle' font-size='14' font-family='Arial' fill='white' font-weight='700'>5 KG</text></svg>"
-                alt="Pacote de arroz mockado"
-              >
-            </div>
-            <div class="product-content">
-              <span class="product-category">Grãos</span>
-              <h3>Arroz Tipo 1 - 5kg</h3>
-              <p>Produto essencial para o dia a dia, com rendimento e qualidade.</p>
-              <div class="product-footer">
-                <strong>R$ 28,90</strong>
-                <span>unidade</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <img
-                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 260'><rect width='400' height='260' rx='24' fill='%23efe5d6'/><rect x='120' y='38' width='160' height='184' rx='18' fill='%23fffaf5' stroke='%23ccb79a' stroke-width='4'/><ellipse cx='200' cy='102' rx='52' ry='34' fill='%23b07a42'/><text x='200' y='170' text-anchor='middle' font-size='24' font-family='Arial' fill='%23543a1d' font-weight='700'>FEIJ%C3%83O</text><rect x='155' y='184' width='90' height='22' rx='11' fill='%232f5d3a'/><text x='200' y='199' text-anchor='middle' font-size='13' font-family='Arial' fill='white' font-weight='700'>1 KG</text></svg>"
-                alt="Pacote de feijão mockado"
-              >
-            </div>
-            <div class="product-content">
-              <span class="product-category">Grãos</span>
-              <h3>Feijão Carioca - 1kg</h3>
-              <p>Selecionado para manter sabor, praticidade e economia na compra.</p>
-              <div class="product-footer">
-                <strong>R$ 8,99</strong>
-                <span>unidade</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <img
-                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 260'><rect width='400' height='260' rx='24' fill='%23f7ecd3'/><rect x='160' y='42' width='80' height='176' rx='24' fill='%23ffd56a' stroke='%23d2a545' stroke-width='4'/><rect x='178' y='24' width='44' height='26' rx='8' fill='%236a4f2b'/><rect x='172' y='92' width='56' height='46' rx='10' fill='%23fff4d8'/><text x='200' y='120' text-anchor='middle' font-size='18' font-family='Arial' fill='%236a4f2b' font-weight='700'>%C3%93LEO</text></svg>"
-                alt="Garrafa de óleo mockada"
-              >
-            </div>
-            <div class="product-content">
-              <span class="product-category">Cozinha</span>
-              <h3>Óleo de Soja - 900ml</h3>
-              <p>Ideal para o preparo das refeições do dia a dia.</p>
-              <div class="product-footer">
-                <strong>R$ 7,49</strong>
-                <span>unidade</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <img
-                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 260'><rect width='400' height='260' rx='24' fill='%23efe2d8'/><rect x='122' y='46' width='156' height='172' rx='18' fill='%2350382b'/><rect x='146' y='78' width='108' height='54' rx='12' fill='%23fff4e8'/><text x='200' y='112' text-anchor='middle' font-size='24' font-family='Arial' fill='%2350382b' font-weight='700'>CAF%C3%89</text><circle cx='200' cy='162' r='22' fill='%2371422a'/><path d='M193 160 C198 148, 206 148, 208 160' fill='none' stroke='%23f8e6d2' stroke-width='4' stroke-linecap='round'/></svg>"
-                alt="Pacote de café mockado"
-              >
-            </div>
-            <div class="product-content">
-              <span class="product-category">Bebidas</span>
-              <h3>Café Torrado e Moído - 500g</h3>
-              <p>Perfeito para começar o dia com mais sabor.</p>
-              <div class="product-footer">
-                <strong>R$ 15,90</strong>
-                <span>unidade</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <img
-                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 260'><rect width='400' height='260' rx='24' fill='%23e8f0f6'/><path d='M150 52 L250 52 L232 216 L168 216 Z' fill='white' stroke='%23bfd1df' stroke-width='4'/><rect x='170' y='90' width='60' height='52' rx='10' fill='%23dcefff'/><text x='200' y='122' text-anchor='middle' font-size='20' font-family='Arial' fill='%23456b85' font-weight='700'>LEITE</text></svg>"
-                alt="Caixa de leite mockada"
-              >
-            </div>
-            <div class="product-content">
-              <span class="product-category">Bebidas</span>
-              <h3>Leite Integral - 1L</h3>
-              <p>Item indispensável para o café da manhã e receitas.</p>
-              <div class="product-footer">
-                <strong>R$ 5,79</strong>
-                <span>unidade</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <img
-                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 260'><rect width='400' height='260' rx='24' fill='%23f7ead2'/><rect x='130' y='44' width='140' height='176' rx='18' fill='%23fff3dd' stroke='%23dcc39a' stroke-width='4'/><rect x='155' y='78' width='90' height='44' rx='10' fill='%23f4d58b'/><text x='200' y='106' text-anchor='middle' font-size='18' font-family='Arial' fill='%23705820' font-weight='700'>MACARR%C3%83O</text><path d='M155 158 Q200 130 245 158' fill='none' stroke='%23e0b13d' stroke-width='6' stroke-linecap='round'/><path d='M155 174 Q200 146 245 174' fill='none' stroke='%23e0b13d' stroke-width='6' stroke-linecap='round'/></svg>"
-                alt="Pacote de macarrão mockado"
-              >
-            </div>
-            <div class="product-content">
-              <span class="product-category">Massas</span>
-              <h3>Macarrão Espaguete - 500g</h3>
-              <p>Prático, econômico e perfeito para refeições rápidas.</p>
-              <div class="product-footer">
-                <strong>R$ 4,29</strong>
-                <span>unidade</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <img
-                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 260'><rect width='400' height='260' rx='24' fill='%23f8edd8'/><rect x='122' y='44' width='156' height='174' rx='18' fill='%23fff8ef' stroke='%23dcc9a8' stroke-width='4'/><rect x='150' y='78' width='100' height='46' rx='10' fill='%23fff0c9'/><text x='200' y='108' text-anchor='middle' font-size='18' font-family='Arial' fill='%2381612b' font-weight='700'>A%C3%87%C3%9ACAR</text><rect x='150' y='150' width='100' height='34' rx='17' fill='%23f4f4f4' stroke='%23d9d9d9' stroke-width='3'/></svg>"
-                alt="Pacote de açúcar mockado"
-              >
-            </div>
-            <div class="product-content">
-              <span class="product-category">Mercearia</span>
-              <h3>Açúcar Refinado - 1kg</h3>
-              <p>Produto básico para o uso diário em casa.</p>
-              <div class="product-footer">
-                <strong>R$ 4,99</strong>
-                <span>unidade</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <img
-                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 260'><rect width='400' height='260' rx='24' fill='%23f4e8d4'/><rect x='126' y='50' width='148' height='166' rx='18' fill='%23fff8ef' stroke='%23d4bea0' stroke-width='4'/><rect x='150' y='78' width='100' height='44' rx='10' fill='%23e9d7b8'/><text x='200' y='106' text-anchor='middle' font-size='16' font-family='Arial' fill='%236c5632' font-weight='700'>BISCOITO</text><rect x='146' y='148' width='108' height='26' rx='13' fill='%23d9b16a'/><rect x='156' y='180' width='88' height='12' rx='6' fill='%23c28f4a'/></svg>"
-                alt="Pacote de biscoito mockado"
-              >
-            </div>
-            <div class="product-content">
-              <span class="product-category">Lanches</span>
-              <h3>Biscoito Cream Cracker</h3>
-              <p>Uma opção prática para café, lanche e pequenas refeições.</p>
-              <div class="product-footer">
-                <strong>R$ 3,79</strong>
-                <span>unidade</span>
-              </div>
-            </div>
-          </article>
-        </div>
+        <div class="product-grid" id="lista-produtos"></div>
       </div>
     </section>
 
-    <section class="offers-section" id="ofertas">
+    <section class="contact-section" id="contato">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Ofertas</span>
-          <h2>Promoções da semana</h2>
-          <p>Bloco promocional para deixar o site mais completo e mais próximo de um comércio real.</p>
-        </div>
-
-        <div class="offers-grid">
-          <article class="offer-card highlight-offer">
-            <span class="offer-badge">Oferta especial</span>
-            <h3>Cesta básica simples</h3>
-            <p>Composição com itens essenciais para a rotina da casa.</p>
-            <strong>R$ 89,90</strong>
-          </article>
-
-          <article class="offer-card">
-            <h3>Leite integral</h3>
-            <p>Na compra de 12 unidades, preço diferenciado.</p>
-            <strong>R$ 5,49</strong>
-          </article>
-
-          <article class="offer-card">
-            <h3>Macarrão 500g</h3>
-            <p>Leve 3 unidades e aproveite a oferta da semana.</p>
-            <strong>R$ 3,99</strong>
-          </article>
-
-          <article class="offer-card">
-            <h3>Café 500g</h3>
-            <p>Produto em destaque com preço promocional.</p>
-            <strong>R$ 14,90</strong>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-section" id="sobre">
-      <div class="container about-grid">
-        <div class="about-content">
-          <span class="section-tag">Sobre nós</span>
-          <h2>Uma mercearia simples, acolhedora e presente no dia a dia do bairro</h2>
-          <p>
-            A Mercearia São José foi pensada para representar um comércio local tradicional,
-            com foco em praticidade, confiança e atendimento próximo da comunidade.
-          </p>
-          <p>
-            Neste projeto acadêmico, a proposta é criar uma base visual sólida em HTML e CSS
-            para depois evoluir o sistema com funcionalidades dinâmicas.
-          </p>
-        </div>
-
-        <div class="about-box">
-          <div class="about-item">
-            <strong>Endereço</strong>
-            <span>Rua das Palmeiras, 120 - Centro</span>
-          </div>
-          <div class="about-item">
-            <strong>Telefone</strong>
+        <div class="contact-card">
+          <div class="contact-line">
+            <strong>WhatsApp</strong>
             <span>(38) 99999-1234</span>
           </div>
-          <div class="about-item">
-            <strong>Funcionamento</strong>
-            <span>Segunda a sábado, das 07h às 20h</span>
-          </div>
-          <div class="about-item">
-            <strong>Pagamento</strong>
-            <span>Dinheiro, PIX e cartão</span>
+          <div class="contact-line">
+            <strong>Endereço</strong>
+            <span>Rua das Palmeiras, 120 - Centro</span>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div>
-        <h3>Mercearia São José</h3>
-        <p>Projeto acadêmico desenvolvido com HTML e CSS puro.</p>
-      </div>
-
-      <div class="footer-links">
-        <a href="#inicio">Início</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#ofertas">Ofertas</a>
-        <a href="painel.html">Painel</a>
-      </div>
-    </div>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
