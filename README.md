@@ -1,46 +1,55 @@
 # 🛒 Mercearia São José
 
-Projeto acadêmico desenvolvido com **HTML e CSS puro**, representando uma pequena mercearia de bairro com página institucional e estrutura visual preparada para futuras evoluções com **JavaScript e PHP**.
+Projeto acadêmico desenvolvido para a disciplina de Desenvolvimento Web, evoluído da primeira entrega (HTML + CSS) para a segunda etapa com **JavaScript + PHP**, tornando a aplicação dinâmica.
 
 ---
 
 ## 📌 Sobre o projeto
 
-A proposta deste sistema é simular o site de uma mercearia local, com foco em:
+O sistema simula uma pequena mercearia de bairro com:
 
-- apresentação visual profissional
-- catálogo de produtos
-- promoções da semana
-- informações de contato
-- página preparada para expansão futura
-- painel administrativo separado
-
-Nesta primeira etapa, todos os dados são **estáticos (mockados)**.
-
-O projeto foi construído pensando em futuras implementações dinâmicas.
+- página principal para exibição dos produtos
+- painel administrativo
+- cadastro dinâmico de produtos
+- exclusão de produtos
+- consumo de dados com JavaScript
+- backend mockado com PHP
 
 ---
 
-## 🎯 Objetivo acadêmico
+## 🚀 Evolução do projeto
 
-Este projeto foi desenvolvido para a disciplina de desenvolvimento WEB, com os seguintes requisitos:
+### Primeira entrega
+- HTML5
+- CSS3
+- layout estático
+- informações fixas
 
-- construção de um sistema WEB
-- página principal com exibição de informações
-- segunda página com painel administrativo
-- uso de **HTML + CSS puro**
-- estrutura organizada e legível
+### Segunda entrega
+- JavaScript
+- PHP
+- consumo dinâmico de dados
+- produtos carregados automaticamente
+- painel com cadastro e exclusão
 
 ---
 
 ## 🖥️ Estrutura do projeto
 
 ```text
-mercearia-sao-jose/
+Trabalho_Estacio_HTML-CSS-JS-PHP/
 │
 ├── index.html
 ├── painel.html
+├── script.js
+├── painel.js
+├── produtos.php
+├── salvar-produto.php
+├── excluir-produto.php
 ├── README.md
+│
+├── dados/
+│   └── produtos.json
 │
 └── styles/
     └── styles.css
@@ -48,47 +57,23 @@ mercearia-sao-jose/
 
 ---
 
-## 📄 Páginas do sistema
-
-### 🏠 Página principal (`index.html`)
-
-Contém:
-
-- seção principal de apresentação
-- produtos em destaque
-- ofertas da semana
-- informações de contato
-- navegação entre seções
-
-### ⚙️ Painel administrativo (`painel.html`)
-
-Estrutura visual para futura implementação de:
-
-- cadastro de produtos
-- edição de produtos
-- exclusão de produtos
-- gerenciamento de ofertas
-
-Nesta etapa o painel possui apenas estrutura visual.
-
----
-
-## 🎨 Tecnologias utilizadas
+## ⚙️ Tecnologias utilizadas
 
 - HTML5
 - CSS3
-- SVG mockado para imagens
-- Layout responsivo
-- Estrutura sem frameworks
+- JavaScript
+- PHP
+- JSON mockado
 
 ---
 
-## 🚀 Próximas evoluções
+## 🎯 Funcionalidades
 
-- JavaScript
-- consumo de dados mockados
-- PHP
-- renderização dinâmica
+- listagem dinâmica de produtos
+- cadastro de novos produtos
+- exclusão de produtos
+- atualização automática da interface
+- painel administrativo separado
 
 ---
 
