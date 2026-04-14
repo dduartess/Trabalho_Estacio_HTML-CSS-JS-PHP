@@ -1,0 +1,112 @@
+<?php
+
+require_once __DIR__ . '/auth.php';
+
+redirecionarSeNaoAutenticado();
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel da Loja</title>
+  <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body class="panel-page">
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html" aria-label="Voltar para a pagina inicial">
+        <div class="brand-badge">MSJ</div>
+        <div>
+          <h1>Painel da Loja</h1>
+          <p>Gestao de catalogo, precos e disponibilidade</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegacao do painel">
+        <a href="index.html">Voltar ao site</a>
+        <a href="logout.php" class="nav-highlight">Sair</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="panel-main">
+    <div class="container panel-content">
+      <section class="panel-card">
+        <div class="panel-header">
+          <span class="section-tag">Catalogo</span>
+          <h2 id="titulo-formulario">Novo produto</h2>
+        </div>
+
+        <form id="form-produto" class="product-form">
+          <input type="hidden" id="produto-id" name="id">
+
+          <div class="form-group">
+            <label for="nome">Nome do produto</label>
+            <input type="text" id="nome" name="nome" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="categoria">Categoria</label>
+              <input type="text" id="categoria" name="categoria" required>
+            </div>
+
+            <div class="form-group">
+              <label for="preco">Preco</label>
+              <input type="number" step="0.01" min="0.01" id="preco" name="preco" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="descricao">Descricao</label>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="imagem">URL da imagem</label>
+            <input
+              type="url"
+              id="imagem"
+              name="imagem"
+              placeholder="https://exemplo.com/imagem.jpg"
+            >
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="botao-submit">Salvar</button>
+            <button type="button" class="btn btn-secondary" id="botao-cancelar" hidden>Cancelar edicao</button>
+          </div>
+
+          <p id="mensagem-formulario" class="feedback-message" hidden></p>
+        </form>
+      </section>
+
+      <section class="panel-card">
+        <div class="panel-header">
+          <span class="section-tag">Operacao</span>
+          <h2>Lista de produtos</h2>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Categoria</th>
+                <th>Preco</th>
+                <th>Descricao</th>
+                <th>Imagem</th>
+                <th>Acoes</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-produtos"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="painel.js"></script>
+</body>
+</html>

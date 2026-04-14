@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mercearia São José</title>
+  <title>Mercearia Sao Jose</title>
   <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-content">
-      <a class="brand" href="#inicio" aria-label="Ir para o início da Mercearia São José">
+      <a class="brand" href="#inicio" aria-label="Ir para o inicio da Mercearia Sao Jose">
         <div class="brand-badge">MSJ</div>
         <div>
-          <h1>Mercearia São José</h1>
-          <p>Qualidade, praticidade e preço justo no seu bairro</p>
+          <h1>Mercearia Sao Jose</h1>
+          <p>Compras do dia a dia com entrega local e atendimento rapido</p>
         </div>
       </a>
 
-      <nav class="main-nav" aria-label="Navegação principal">
-        <a href="#inicio">Início</a>
+      <nav class="main-nav" aria-label="Navegacao principal">
+        <a href="#inicio">Inicio</a>
         <a href="#produtos">Produtos</a>
+        <a href="#atendimento">Atendimento</a>
         <a href="#contato">Contato</a>
-        <a href="painel.html" class="nav-highlight">Painel</a>
+        <a href="login.php" class="nav-highlight">Area da loja</a>
       </nav>
     </div>
   </header>
@@ -30,69 +31,86 @@
     <section class="hero-section" id="inicio">
       <div class="container hero-grid">
         <div class="hero-text">
-          <span class="section-tag">Mercearia de bairro</span>
-          <h2>Tudo o que você precisa para a sua casa, perto de você.</h2>
+          <span class="section-tag">Mercado de bairro com entrega local</span>
+          <h2>Reposicao rapida para a casa com itens essenciais, preco justo e atendimento direto.</h2>
           <p>
-            Produtos essenciais com carregamento dinâmico via JavaScript e PHP para
-            simular uma mercearia moderna, simples e funcional.
+            Encontre produtos selecionados para abastecer a semana, resolver compras urgentes
+            e receber seu pedido com praticidade nas regioes proximas.
           </p>
 
           <div class="hero-actions">
-            <a href="#produtos" class="btn btn-primary">Ver produtos</a>
-            <a href="painel.html" class="btn btn-secondary">Abrir painel</a>
+            <a href="#produtos" class="btn btn-primary">Ver catalogo</a>
+            <a href="#contato" class="btn btn-secondary">Fazer pedido</a>
           </div>
 
           <div class="hero-info">
             <article class="hero-info-card">
-              <strong>Entrega rápida</strong>
-              <span>Atendimento ágil no bairro e proximidades.</span>
+              <strong>Entrega no mesmo dia</strong>
+              <span>Atendimento agil para pedidos locais e retirada no balcao.</span>
             </article>
             <article class="hero-info-card">
-              <strong>Produtos básicos</strong>
-              <span>Itens do dia a dia organizados em categorias.</span>
+              <strong>Selecao essencial</strong>
+              <span>Graos, bebidas, cozinha e itens de reposicao frequente.</span>
             </article>
             <article class="hero-info-card">
-              <strong>Painel simples</strong>
-              <span>Cadastro e exclusão com atualização imediata.</span>
+              <strong>Compra sem burocracia</strong>
+              <span>Preco claro, lista objetiva e contato rapido pelo WhatsApp.</span>
             </article>
           </div>
         </div>
 
-        <aside class="hero-panel-card" aria-label="Destaques da mercearia">
-          <span class="card-label">Destaques</span>
+        <aside class="hero-panel-card" aria-label="Destaques da semana">
+          <span class="card-label">Destaques da semana</span>
           <ul class="featured-list">
             <li>
               <div>
-                <strong>Arroz, feijão e café</strong>
-                <span>Itens mais procurados da semana.</span>
+                <strong>Cesta basica sempre abastecida</strong>
+                <span>Arroz, feijao, cafe e itens de cozinha com reposicao constante.</span>
               </div>
-              <b>Popular</b>
+              <b>Essencial</b>
             </li>
             <li>
               <div>
-                <strong>Cadastro em tempo real</strong>
-                <span>Produtos entram no painel sem recarregar a página inteira.</span>
+                <strong>Ofertas para a rotina</strong>
+                <span>Produtos com giro rapido e preco pensado para compras recorrentes.</span>
               </div>
-              <b>Dinâmico</b>
+              <b>Oferta</b>
             </li>
             <li>
               <div>
-                <strong>Organização por categoria</strong>
-                <span>Visualização clara para o cliente e para a administração.</span>
+                <strong>Pedido por mensagem</strong>
+                <span>Monte sua lista e confirme a entrega sem perder tempo.</span>
               </div>
-              <b>Prático</b>
+              <b>Facil</b>
             </li>
           </ul>
         </aside>
       </div>
     </section>
 
+    <section class="trust-section" aria-label="Indicadores da loja">
+      <div class="container trust-grid">
+        <article class="trust-card">
+          <strong>+250 pedidos</strong>
+          <span>atendidos por semana entre retirada e entrega local</span>
+        </article>
+        <article class="trust-card">
+          <strong>Compra rapida</strong>
+          <span>lista objetiva para resolver a reposicao do dia a dia</span>
+        </article>
+        <article class="trust-card">
+          <strong>Bairro e proximidades</strong>
+          <span>atendimento focado na regiao para ganhar velocidade</span>
+        </article>
+      </div>
+    </section>
+
     <section class="products-section" id="produtos">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Produtos</span>
-          <h2>Itens disponíveis</h2>
-          <p>Os produtos abaixo são carregados dinamicamente a partir do backend em PHP.</p>
+          <span class="section-tag">Catalogo</span>
+          <h2>Itens disponiveis hoje</h2>
+          <p>Produtos organizados para facilitar compras da semana, reposicao rapida e pedidos recorrentes.</p>
         </div>
 
         <div class="feedback-message" id="mensagem-produtos" hidden></div>
@@ -100,14 +118,36 @@
       </div>
     </section>
 
+    <section class="service-section" id="atendimento">
+      <div class="container service-grid">
+        <article class="service-card">
+          <span class="section-tag">Atendimento</span>
+          <h2>Um mercado pensado para resolver a compra do dia sem desperdicio de tempo.</h2>
+          <p>
+            Consulte o catalogo, envie sua lista, confirme quantidades e receba a previsao de entrega.
+            Tudo de forma objetiva para compras simples e recorrentes.
+          </p>
+        </article>
+
+        <article class="service-card accent">
+          <strong>1. Escolha os itens</strong>
+          <span>Monte a lista com os produtos que precisa hoje.</span>
+          <strong>2. Confirme o pedido</strong>
+          <span>Ajuste quantidades, observacoes e forma de retirada.</span>
+          <strong>3. Receba com praticidade</strong>
+          <span>Entrega local ou retirada rapida no balcao.</span>
+        </article>
+      </div>
+    </section>
+
     <section class="contact-section" id="contato">
       <div class="container contact-grid">
         <div class="contact-box">
           <span class="section-tag">Contato</span>
-          <h2>Atendimento próximo e direto</h2>
+          <h2>Atendimento proximo, direto e sem complicacao</h2>
           <p>
-            Projeto acadêmico com proposta de uma mercearia local. Os dados podem ser
-            gerenciados pelo painel administrativo.
+            Estamos prontos para atender compras urgentes, reposicao da casa e pedidos do cotidiano
+            com mais agilidade para o bairro e arredores.
           </p>
         </div>
 
@@ -117,12 +157,12 @@
             <span>(38) 99999-1234</span>
           </div>
           <div class="contact-line">
-            <strong>Endereço</strong>
+            <strong>Endereco</strong>
             <span>Rua das Palmeiras, 120 - Centro</span>
           </div>
           <div class="contact-line">
-            <strong>Horário</strong>
-            <span>Segunda a sábado, das 7h às 20h</span>
+            <strong>Horario</strong>
+            <span>Segunda a sabado, das 7h as 20h</span>
           </div>
         </div>
       </div>
@@ -132,13 +172,14 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <div>
-        <h3>Mercearia São José</h3>
-        <p>Projeto acadêmico desenvolvido com HTML, CSS, JavaScript e PHP.</p>
+        <h3>Mercearia Sao Jose</h3>
+        <p>Mercado de bairro com atendimento local, entrega agil e selecao essencial.</p>
       </div>
       <div class="footer-links">
-        <a href="#inicio">Início</a>
+        <a href="#inicio">Inicio</a>
         <a href="#produtos">Produtos</a>
-        <a href="painel.html">Painel</a>
+        <a href="#contato">Contato</a>
+        <a href="painel.html">Area da loja</a>
       </div>
     </div>
   </footer>

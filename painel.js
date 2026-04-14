@@ -202,6 +202,15 @@ async function carregarProdutosPainel() {
   }
 }
 
+function redirecionarSeSessaoExpirada(resultado) {
+  if (resultado?.mensagem === 'Voce precisa fazer login para continuar.') {
+    window.location.href = 'login.php';
+    return true;
+  }
+
+  return false;
+}
+
 async function salvarProduto(evento) {
   evento.preventDefault();
 
@@ -247,6 +256,10 @@ async function salvarProduto(evento) {
     const resultado = await lerRespostaJson(resposta);
 
     if (!resposta.ok || !resultado?.sucesso) {
+      if (redirecionarSeSessaoExpirada(resultado)) {
+        return;
+      }
+
       exibirMensagemFormulario(resultado?.mensagem || 'Erro ao salvar produto.', 'error');
       return;
     }
@@ -277,6 +290,10 @@ async function excluirProduto(id) {
     const resultado = await lerRespostaJson(resposta);
 
     if (!resposta.ok || !resultado?.sucesso) {
+      if (redirecionarSeSessaoExpirada(resultado)) {
+        return;
+      }
+
       exibirMensagemFormulario(resultado?.mensagem || 'Erro ao excluir produto.', 'error');
       return;
     }
