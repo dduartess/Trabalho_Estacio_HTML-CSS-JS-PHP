@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Arroz Tipo 1 - 5kg</title>
+  <desc id="desc">Ilustracao de um saco de arroz.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4efe2"/>
+      <stop offset="100%" stop-color="#e3d4ae"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <ellipse cx="320" cy="338" rx="170" ry="30" fill="#cfbe98"/>
+  <path d="M220 110h200l24 198c4 32-21 62-54 62H250c-33 0-58-30-54-62z" fill="#fff7e8" stroke="#b69254" stroke-width="8"/>
+  <path d="M220 110h200l-22 46H242z" fill="#d4ad63"/>
+  <ellipse cx="320" cy="215" rx="75" ry="70" fill="#f7f0df"/>
+  <g fill="#e8dbc0">
+    <ellipse cx="290" cy="200" rx="11" ry="6"/>
+    <ellipse cx="320" cy="185" rx="11" ry="6"/>
+    <ellipse cx="350" cy="200" rx="11" ry="6"/>
+    <ellipse cx="302" cy="228" rx="11" ry="6"/>
+    <ellipse cx="338" cy="228" rx="11" ry="6"/>
+  </g>
+  <text x="320" y="313" text-anchor="middle" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#6d5427">ARROZ 5KG</text>
+</svg>

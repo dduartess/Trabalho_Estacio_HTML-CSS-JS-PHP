@@ -1,8 +1,81 @@
+const estadoFormulario = {
+  modo: 'cadastro',
+  produtoId: null
+};
+
+async function lerRespostaJson(resposta) {
+  const texto = await resposta.text();
+
+  if (!texto) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(texto);
+  } catch (erro) {
+    return null;
+  }
+}
+
 function formatarPreco(valor) {
   return Number(valor).toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL'
   });
+}
+
+function obterElementosFormulario() {
+  return {
+    formulario: document.getElementById('form-produto'),
+    campoId: document.getElementById('produto-id'),
+    campoNome: document.getElementById('nome'),
+    campoCategoria: document.getElementById('categoria'),
+    campoPreco: document.getElementById('preco'),
+    campoDescricao: document.getElementById('descricao'),
+    campoImagem: document.getElementById('imagem'),
+    titulo: document.getElementById('titulo-formulario'),
+    botaoSubmit: document.getElementById('botao-submit'),
+    botaoCancelar: document.getElementById('botao-cancelar')
+  };
+}
+
+function atualizarModoFormulario() {
+  const elementos = obterElementosFormulario();
+  const emEdicao = estadoFormulario.modo === 'edicao';
+
+  elementos.titulo.textContent = emEdicao ? 'Editar produto' : 'Novo produto';
+  elementos.botaoSubmit.textContent = emEdicao ? 'Atualizar' : 'Salvar';
+  elementos.botaoCancelar.hidden = !emEdicao;
+}
+
+function preencherFormulario(produto) {
+  const elementos = obterElementosFormulario();
+
+  estadoFormulario.modo = 'edicao';
+  estadoFormulario.produtoId = Number(produto.id);
+
+  elementos.campoId.value = produto.id;
+  elementos.campoNome.value = produto.nome || '';
+  elementos.campoCategoria.value = produto.categoria || '';
+  elementos.campoPreco.value = produto.preco || '';
+  elementos.campoDescricao.value = produto.descricao || '';
+  elementos.campoImagem.value = produto.imagem || '';
+
+  atualizarModoFormulario();
+  limparMensagemFormulario();
+  elementos.campoNome.focus();
+}
+
+function resetarFormulario() {
+  const elementos = obterElementosFormulario();
+
+  estadoFormulario.modo = 'cadastro';
+  estadoFormulario.produtoId = null;
+
+  elementos.formulario.reset();
+  elementos.campoId.value = '';
+
+  atualizarModoFormulario();
 }
 
 function exibirMensagemFormulario(texto, tipo = 'info') {
@@ -66,13 +139,21 @@ function criarLinhaProduto(produto) {
   const colunaImagem = criarCelulaImagem(produto);
 
   const colunaAcoes = document.createElement('td');
+  colunaAcoes.className = 'table-actions';
+
+  const botaoEditar = document.createElement('button');
+  botaoEditar.type = 'button';
+  botaoEditar.className = 'table-btn';
+  botaoEditar.textContent = 'Editar';
+  botaoEditar.addEventListener('click', () => preencherFormulario(produto));
+
   const botaoExcluir = document.createElement('button');
   botaoExcluir.type = 'button';
   botaoExcluir.className = 'table-btn danger';
   botaoExcluir.textContent = 'Excluir';
   botaoExcluir.addEventListener('click', () => excluirProduto(produto.id));
 
-  colunaAcoes.appendChild(botaoExcluir);
+  colunaAcoes.append(botaoEditar, botaoExcluir);
   linha.append(
     colunaNome,
     colunaCategoria,
@@ -94,15 +175,16 @@ async function carregarProdutosPainel() {
 
   try {
     const resposta = await fetch('produtos.php');
-
-    if (!resposta.ok) {
-      throw new Error('Falha ao buscar produtos.');
-    }
-
-    const produtos = await resposta.json();
+    const dados = await lerRespostaJson(resposta);
     corpoTabela.innerHTML = '';
 
-    if (!Array.isArray(produtos) || produtos.length === 0) {
+    if (!resposta.ok) {
+      throw new Error(dados?.mensagem || 'Erro ao carregar produtos.');
+    }
+
+    const produtos = Array.isArray(dados) ? dados : [];
+
+    if (produtos.length === 0) {
       const linha = document.createElement('tr');
       const coluna = document.createElement('td');
       coluna.colSpan = 6;
@@ -116,19 +198,19 @@ async function carregarProdutosPainel() {
       corpoTabela.appendChild(criarLinhaProduto(produto));
     });
   } catch (erro) {
-    corpoTabela.innerHTML = '<tr><td colspan="6">Erro ao carregar produtos.</td></tr>';
+    corpoTabela.innerHTML = `<tr><td colspan="6">${erro.message || 'Erro ao carregar produtos.'}</td></tr>`;
   }
 }
 
 async function salvarProduto(evento) {
   evento.preventDefault();
 
-  const formulario = document.getElementById('form-produto');
-  const nome = document.getElementById('nome').value.trim();
-  const categoria = document.getElementById('categoria').value.trim();
-  const preco = document.getElementById('preco').value.trim();
-  const descricao = document.getElementById('descricao').value.trim();
-  const imagem = document.getElementById('imagem').value.trim();
+  const elementos = obterElementosFormulario();
+  const nome = elementos.campoNome.value.trim();
+  const categoria = elementos.campoCategoria.value.trim();
+  const preco = elementos.campoPreco.value.trim();
+  const descricao = elementos.campoDescricao.value.trim();
+  const imagem = elementos.campoImagem.value.trim();
 
   limparMensagemFormulario();
 
@@ -138,29 +220,44 @@ async function salvarProduto(evento) {
   }
 
   try {
-    const resposta = await fetch('salvar-produto.php', {
+    const endpoint = estadoFormulario.modo === 'edicao'
+      ? 'atualizar-produto.php'
+      : 'salvar-produto.php';
+
+    const corpo = {
+      nome,
+      categoria,
+      preco,
+      descricao,
+      imagem
+    };
+
+    if (estadoFormulario.modo === 'edicao') {
+      corpo.id = estadoFormulario.produtoId;
+    }
+
+    const resposta = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        nome,
-        categoria,
-        preco,
-        descricao,
-        imagem
-      })
+      body: JSON.stringify(corpo)
     });
 
-    const resultado = await resposta.json();
+    const resultado = await lerRespostaJson(resposta);
 
-    if (!resposta.ok || !resultado.sucesso) {
-      exibirMensagemFormulario(resultado.mensagem || 'Erro ao salvar produto.', 'error');
+    if (!resposta.ok || !resultado?.sucesso) {
+      exibirMensagemFormulario(resultado?.mensagem || 'Erro ao salvar produto.', 'error');
       return;
     }
 
-    exibirMensagemFormulario('Produto cadastrado com sucesso.', 'success');
-    formulario.reset();
+    exibirMensagemFormulario(
+      estadoFormulario.modo === 'edicao'
+        ? 'Produto atualizado com sucesso.'
+        : 'Produto cadastrado com sucesso.',
+      'success'
+    );
+    resetarFormulario();
     await carregarProdutosPainel();
   } catch (erro) {
     exibirMensagemFormulario('Erro ao salvar produto.', 'error');
@@ -177,10 +274,10 @@ async function excluirProduto(id) {
       body: JSON.stringify({ id })
     });
 
-    const resultado = await resposta.json();
+    const resultado = await lerRespostaJson(resposta);
 
-    if (!resposta.ok || !resultado.sucesso) {
-      exibirMensagemFormulario(resultado.mensagem || 'Erro ao excluir produto.', 'error');
+    if (!resposta.ok || !resultado?.sucesso) {
+      exibirMensagemFormulario(resultado?.mensagem || 'Erro ao excluir produto.', 'error');
       return;
     }
 
@@ -192,12 +289,17 @@ async function excluirProduto(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const formulario = document.getElementById('form-produto');
+  const { formulario, botaoCancelar } = obterElementosFormulario();
 
   if (!formulario) {
     return;
   }
 
+  atualizarModoFormulario();
   formulario.addEventListener('submit', salvarProduto);
+  botaoCancelar.addEventListener('click', () => {
+    resetarFormulario();
+    limparMensagemFormulario();
+  });
   carregarProdutosPainel();
 });

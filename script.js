@@ -1,5 +1,19 @@
 const PLACEHOLDER_IMAGEM = 'https://via.placeholder.com/640x420?text=Sem+Imagem';
 
+async function lerRespostaJson(resposta) {
+  const texto = await resposta.text();
+
+  if (!texto) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(texto);
+  } catch (erro) {
+    return null;
+  }
+}
+
 function formatarPreco(valor) {
   return Number(valor).toLocaleString('pt-BR', {
     style: 'currency',
@@ -89,15 +103,18 @@ async function carregarProdutos() {
 
   try {
     const resposta = await fetch('produtos.php');
-
-    if (!resposta.ok) {
-      throw new Error('Falha ao buscar produtos.');
-    }
-
-    const produtos = await resposta.json();
+    const dados = await lerRespostaJson(resposta);
     container.innerHTML = '';
 
-    if (!Array.isArray(produtos) || produtos.length === 0) {
+    if (!resposta.ok) {
+      throw new Error(
+        dados?.mensagem || 'Nao foi possivel consultar os produtos no servidor.'
+      );
+    }
+
+    const produtos = Array.isArray(dados) ? dados : [];
+
+    if (produtos.length === 0) {
       exibirMensagemProdutos('Nenhum produto cadastrado no momento.');
       return;
     }
@@ -109,9 +126,7 @@ async function carregarProdutos() {
     });
   } catch (erro) {
     container.innerHTML = '';
-    exibirMensagemProdutos(
-      'Nao foi possivel carregar os produtos. Execute o projeto em um servidor com PHP, como http://localhost:8000.'
-    );
+    exibirMensagemProdutos(erro.message || 'Nao foi possivel carregar os produtos.');
   }
 }
 

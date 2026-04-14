@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Cafe Torrado e Moido - 500g</title>
+  <desc id="desc">Ilustracao de um pacote de cafe.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#42281e"/>
+      <stop offset="100%" stop-color="#8b5c45"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <ellipse cx="320" cy="344" rx="170" ry="28" fill="#5f4032"/>
+  <path d="M225 95h190l25 212c3 28-19 53-48 53H248c-29 0-51-25-48-53z" fill="#f0dfcf" stroke="#5b382b" stroke-width="8"/>
+  <rect x="250" y="135" width="140" height="102" rx="18" fill="#6b4334"/>
+  <circle cx="320" cy="186" r="34" fill="#f3eadc"/>
+  <path d="M320 164c18 0 28 8 28 22s-10 22-28 22-28-8-28-22 10-22 28-22z" fill="#6b4334"/>
+  <path d="M320 146c9-11 9-21 2-31 15 9 22 22 14 35" fill="none" stroke="#f5e7d2" stroke-width="7" stroke-linecap="round"/>
+  <text x="320" y="296" text-anchor="middle" font-size="31" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5b382b">CAFE 500G</text>
+</svg>

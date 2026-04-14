@@ -553,6 +553,12 @@ td {
   background: var(--danger);
 }
 
+.table-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .image-link {
   color: var(--primary);
   font-weight: 700;

@@ -2,18 +2,13 @@
 
 header('Content-Type: application/json; charset=utf-8');
 
-$caminhoArquivo = __DIR__ . '/dados/produtos.json';
+require_once __DIR__ . '/produto-utils.php';
 
-if (!file_exists($caminhoArquivo)) {
-    echo json_encode([]);
-    exit;
+try {
+    echo json_encode(buscarTodosProdutos(), JSON_UNESCAPED_UNICODE);
+} catch (Throwable $erro) {
+    enviarJson([
+        'sucesso' => false,
+        'mensagem' => 'Erro ao consultar produtos no banco de dados.'
+    ], 500);
 }
-
-$conteudo = file_get_contents($caminhoArquivo);
-
-if ($conteudo === false || trim($conteudo) === '') {
-    echo json_encode([]);
-    exit;
-}
-
-echo $conteudo;

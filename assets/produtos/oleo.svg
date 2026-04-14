@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Oleo de Soja - 900ml</title>
+  <desc id="desc">Ilustracao de uma garrafa de oleo de soja.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7efbf"/>
+      <stop offset="100%" stop-color="#e9d56e"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <ellipse cx="320" cy="346" rx="120" ry="24" fill="#d0bf6b"/>
+  <rect x="294" y="70" width="52" height="42" rx="14" fill="#a5531f"/>
+  <rect x="278" y="102" width="84" height="220" rx="42" fill="#f7d94d" stroke="#b68818" stroke-width="8"/>
+  <rect x="264" y="164" width="112" height="76" rx="18" fill="#fff7cf" stroke="#b68818" stroke-width="6"/>
+  <path d="M320 178c26 26 40 44 40 63 0 21-18 37-40 37s-40-16-40-37c0-19 14-37 40-63z" fill="#7db85a"/>
+  <path d="M320 196c15 15 24 26 24 39 0 12-11 22-24 22s-24-10-24-22c0-13 9-24 24-39z" fill="#d6f2b2"/>
+  <text x="320" y="300" text-anchor="middle" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#9b6c00">OLEO 900ML</text>
+</svg>

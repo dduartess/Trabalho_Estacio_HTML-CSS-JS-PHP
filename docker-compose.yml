@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mercearia-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mercearia_sao_jose
+      MYSQL_USER: mercearia_user
+      MYSQL_PASSWORD: mercearia_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:

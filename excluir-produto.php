@@ -2,36 +2,37 @@
 
 header('Content-Type: application/json; charset=utf-8');
 
-$caminhoArquivo = __DIR__ . '/dados/produtos.json';
-$dadosRecebidos = json_decode(file_get_contents('php://input'), true);
+require_once __DIR__ . '/produto-utils.php';
 
-if (!is_array($dadosRecebidos) || empty($dadosRecebidos['id'])) {
-    http_response_code(400);
-    echo json_encode([
+$dadosRecebidos = lerJsonDaRequisicao();
+$idProduto = isset($dadosRecebidos['id']) ? (int) $dadosRecebidos['id'] : 0;
+
+if ($idProduto <= 0) {
+    enviarJson([
         'sucesso' => false,
-        'mensagem' => 'ID inválido.'
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
+        'mensagem' => 'Informe um ID valido.'
+    ], 400);
 }
 
-$idProduto = (int) $dadosRecebidos['id'];
-$produtos = [];
+try {
+    $pdo = obterConexaoBanco();
+    $stmt = $pdo->prepare('DELETE FROM produtos WHERE id = :id');
+    $stmt->execute([':id' => $idProduto]);
 
-if (file_exists($caminhoArquivo)) {
-    $conteudoAtual = file_get_contents($caminhoArquivo);
-    $produtos = json_decode($conteudoAtual, true) ?? [];
+    if ($stmt->rowCount() === 0) {
+        enviarJson([
+            'sucesso' => false,
+            'mensagem' => 'Produto nao encontrado.'
+        ], 404);
+    }
+
+    enviarJson([
+        'sucesso' => true,
+        'mensagem' => 'Produto excluido com sucesso.'
+    ]);
+} catch (Throwable $erro) {
+    enviarJson([
+        'sucesso' => false,
+        'mensagem' => 'Erro ao excluir produto do banco de dados.'
+    ], 500);
 }
-
-$produtosFiltrados = array_values(array_filter($produtos, function ($produto) use ($idProduto) {
-    return (int) $produto['id'] !== $idProduto;
-}));
-
-file_put_contents(
-    $caminhoArquivo,
-    json_encode($produtosFiltrados, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
-);
-
-echo json_encode([
-    'sucesso' => true,
-    'mensagem' => 'Produto excluído com sucesso.'
-], JSON_UNESCAPED_UNICODE);
