@@ -3,7 +3,6 @@
 header('Content-Type: application/json; charset=utf-8');
 
 $caminhoArquivo = __DIR__ . '/dados/produtos.json';
-
 $dadosRecebidos = json_decode(file_get_contents('php://input'), true);
 
 if (!is_array($dadosRecebidos) || empty($dadosRecebidos['id'])) {
@@ -11,12 +10,11 @@ if (!is_array($dadosRecebidos) || empty($dadosRecebidos['id'])) {
     echo json_encode([
         'sucesso' => false,
         'mensagem' => 'ID inválido.'
-    ]);
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
 $idProduto = (int) $dadosRecebidos['id'];
-
 $produtos = [];
 
 if (file_exists($caminhoArquivo)) {
@@ -36,4 +34,4 @@ file_put_contents(
 echo json_encode([
     'sucesso' => true,
     'mensagem' => 'Produto excluído com sucesso.'
-]);
+], JSON_UNESCAPED_UNICODE);

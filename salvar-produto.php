@@ -3,7 +3,6 @@
 header('Content-Type: application/json; charset=utf-8');
 
 $caminhoArquivo = __DIR__ . '/dados/produtos.json';
-
 $dadosRecebidos = json_decode(file_get_contents('php://input'), true);
 
 if (
@@ -17,7 +16,18 @@ if (
     echo json_encode([
         'sucesso' => false,
         'mensagem' => 'Dados inválidos.'
-    ]);
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+$preco = filter_var($dadosRecebidos['preco'], FILTER_VALIDATE_FLOAT);
+
+if ($preco === false || $preco <= 0) {
+    http_response_code(400);
+    echo json_encode([
+        'sucesso' => false,
+        'mensagem' => 'Informe um preço válido.'
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -40,7 +50,7 @@ $novoProduto = [
     'id' => $maiorId + 1,
     'nome' => trim($dadosRecebidos['nome']),
     'categoria' => trim($dadosRecebidos['categoria']),
-    'preco' => (float) $dadosRecebidos['preco'],
+    'preco' => (float) $preco,
     'descricao' => trim($dadosRecebidos['descricao'])
 ];
 
@@ -55,4 +65,4 @@ echo json_encode([
     'sucesso' => true,
     'mensagem' => 'Produto salvo com sucesso.',
     'produto' => $novoProduto
-]);
+], JSON_UNESCAPED_UNICODE);

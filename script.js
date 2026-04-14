@@ -1,3 +1,69 @@
+function formatarPreco(valor) {
+  return Number(valor).toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  });
+}
+
+function exibirMensagemProdutos(texto) {
+  const mensagem = document.getElementById('mensagem-produtos');
+
+  if (!mensagem) {
+    return;
+  }
+
+  mensagem.textContent = texto;
+  mensagem.hidden = false;
+}
+
+function esconderMensagemProdutos() {
+  const mensagem = document.getElementById('mensagem-produtos');
+
+  if (!mensagem) {
+    return;
+  }
+
+  mensagem.hidden = true;
+  mensagem.textContent = '';
+}
+
+function criarCardProduto(produto) {
+  const card = document.createElement('article');
+  card.className = 'product-card';
+
+  const image = document.createElement('div');
+  image.className = 'product-image';
+  image.textContent = produto.nome;
+
+  const content = document.createElement('div');
+  content.className = 'product-content';
+
+  const category = document.createElement('span');
+  category.className = 'product-category';
+  category.textContent = produto.categoria;
+
+  const title = document.createElement('h3');
+  title.textContent = produto.nome;
+
+  const description = document.createElement('p');
+  description.textContent = produto.descricao;
+
+  const footer = document.createElement('div');
+  footer.className = 'product-footer';
+
+  const price = document.createElement('strong');
+  price.textContent = formatarPreco(produto.preco);
+
+  const unit = document.createElement('span');
+  unit.textContent = 'unidade';
+
+  footer.append(price, unit);
+  content.append(category, title, description, footer);
+  card.append(image, content);
+
+  return card;
+}
+
 async function carregarProdutos() {
   const container = document.getElementById('lista-produtos');
 
@@ -7,32 +73,30 @@ async function carregarProdutos() {
 
   try {
     const resposta = await fetch('produtos.php');
-    const produtos = await resposta.json();
 
+    if (!resposta.ok) {
+      throw new Error('Falha ao buscar produtos.');
+    }
+
+    const produtos = await resposta.json();
     container.innerHTML = '';
 
+    if (!Array.isArray(produtos) || produtos.length === 0) {
+      exibirMensagemProdutos('Nenhum produto cadastrado no momento.');
+      return;
+    }
+
+    esconderMensagemProdutos();
+
     produtos.forEach((produto) => {
-      const card = document.createElement('article');
-      card.className = 'product-card';
-
-      card.innerHTML = `
-        <div class="product-image">${produto.nome}</div>
-        <div class="product-content">
-          <span class="product-category">${produto.categoria}</span>
-          <h3>${produto.nome}</h3>
-          <p>${produto.descricao}</p>
-          <div class="product-footer">
-            <strong>R$ ${Number(produto.preco).toFixed(2).replace('.', ',')}</strong>
-            <span>unidade</span>
-          </div>
-        </div>
-      `;
-
-      container.appendChild(card);
+      container.appendChild(criarCardProduto(produto));
     });
   } catch (erro) {
-    container.innerHTML = '<p>Não foi possível carregar os produtos.</p>';
+    container.innerHTML = '';
+    exibirMensagemProdutos(
+      'Não foi possível carregar os produtos. Execute o projeto em um servidor com PHP, como http://localhost:8000.'
+    );
   }
 }
 
-carregarProdutos();
+document.addEventListener('DOMContentLoaded', carregarProdutos);

@@ -9,15 +9,15 @@
 <body>
   <header class="site-header">
     <div class="container header-content">
-      <div class="brand">
+      <a class="brand" href="#inicio" aria-label="Ir para o início da Mercearia São José">
         <div class="brand-badge">MSJ</div>
         <div>
           <h1>Mercearia São José</h1>
           <p>Qualidade, praticidade e preço justo no seu bairro</p>
         </div>
-      </div>
+      </a>
 
-      <nav class="main-nav">
+      <nav class="main-nav" aria-label="Navegação principal">
         <a href="#inicio">Início</a>
         <a href="#produtos">Produtos</a>
         <a href="#contato">Contato</a>
@@ -28,14 +28,62 @@
 
   <main>
     <section class="hero-section" id="inicio">
-      <div class="container">
+      <div class="container hero-grid">
         <div class="hero-text">
           <span class="section-tag">Mercearia de bairro</span>
-          <h2>Tudo o que você precisa para a sua casa, perto de você</h2>
+          <h2>Tudo o que você precisa para a sua casa, perto de você.</h2>
           <p>
-            Agora com produtos carregados dinamicamente usando JavaScript e PHP.
+            Produtos essenciais com carregamento dinâmico via JavaScript e PHP para
+            simular uma mercearia moderna, simples e funcional.
           </p>
+
+          <div class="hero-actions">
+            <a href="#produtos" class="btn btn-primary">Ver produtos</a>
+            <a href="painel.html" class="btn btn-secondary">Abrir painel</a>
+          </div>
+
+          <div class="hero-info">
+            <article class="hero-info-card">
+              <strong>Entrega rápida</strong>
+              <span>Atendimento ágil no bairro e proximidades.</span>
+            </article>
+            <article class="hero-info-card">
+              <strong>Produtos básicos</strong>
+              <span>Itens do dia a dia organizados em categorias.</span>
+            </article>
+            <article class="hero-info-card">
+              <strong>Painel simples</strong>
+              <span>Cadastro e exclusão com atualização imediata.</span>
+            </article>
+          </div>
         </div>
+
+        <aside class="hero-panel-card" aria-label="Destaques da mercearia">
+          <span class="card-label">Destaques</span>
+          <ul class="featured-list">
+            <li>
+              <div>
+                <strong>Arroz, feijão e café</strong>
+                <span>Itens mais procurados da semana.</span>
+              </div>
+              <b>Popular</b>
+            </li>
+            <li>
+              <div>
+                <strong>Cadastro em tempo real</strong>
+                <span>Produtos entram no painel sem recarregar a página inteira.</span>
+              </div>
+              <b>Dinâmico</b>
+            </li>
+            <li>
+              <div>
+                <strong>Organização por categoria</strong>
+                <span>Visualização clara para o cliente e para a administração.</span>
+              </div>
+              <b>Prático</b>
+            </li>
+          </ul>
+        </aside>
       </div>
     </section>
 
@@ -44,15 +92,25 @@
         <div class="section-header">
           <span class="section-tag">Produtos</span>
           <h2>Itens disponíveis</h2>
-          <p>Os produtos abaixo são carregados dinamicamente do PHP.</p>
+          <p>Os produtos abaixo são carregados dinamicamente a partir do backend em PHP.</p>
         </div>
 
-        <div class="product-grid" id="lista-produtos"></div>
+        <div class="feedback-message" id="mensagem-produtos" hidden></div>
+        <div class="product-grid" id="lista-produtos" aria-live="polite"></div>
       </div>
     </section>
 
     <section class="contact-section" id="contato">
-      <div class="container">
+      <div class="container contact-grid">
+        <div class="contact-box">
+          <span class="section-tag">Contato</span>
+          <h2>Atendimento próximo e direto</h2>
+          <p>
+            Projeto acadêmico com proposta de uma mercearia local. Os dados podem ser
+            gerenciados pelo painel administrativo.
+          </p>
+        </div>
+
         <div class="contact-card">
           <div class="contact-line">
             <strong>WhatsApp</strong>
@@ -62,10 +120,28 @@
             <strong>Endereço</strong>
             <span>Rua das Palmeiras, 120 - Centro</span>
           </div>
+          <div class="contact-line">
+            <strong>Horário</strong>
+            <span>Segunda a sábado, das 7h às 20h</span>
+          </div>
         </div>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <h3>Mercearia São José</h3>
+        <p>Projeto acadêmico desenvolvido com HTML, CSS, JavaScript e PHP.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="painel.html">Painel</a>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
