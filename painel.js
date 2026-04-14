@@ -29,6 +29,25 @@ function limparMensagemFormulario() {
   mensagem.className = 'feedback-message';
 }
 
+function criarCelulaImagem(produto) {
+  const colunaImagem = document.createElement('td');
+
+  if (!produto.imagem) {
+    colunaImagem.textContent = 'Sem imagem';
+    return colunaImagem;
+  }
+
+  const link = document.createElement('a');
+  link.href = produto.imagem;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.className = 'image-link';
+  link.textContent = 'Abrir imagem';
+
+  colunaImagem.appendChild(link);
+  return colunaImagem;
+}
+
 function criarLinhaProduto(produto) {
   const linha = document.createElement('tr');
 
@@ -44,6 +63,8 @@ function criarLinhaProduto(produto) {
   const colunaDescricao = document.createElement('td');
   colunaDescricao.textContent = produto.descricao;
 
+  const colunaImagem = criarCelulaImagem(produto);
+
   const colunaAcoes = document.createElement('td');
   const botaoExcluir = document.createElement('button');
   botaoExcluir.type = 'button';
@@ -57,6 +78,7 @@ function criarLinhaProduto(produto) {
     colunaCategoria,
     colunaPreco,
     colunaDescricao,
+    colunaImagem,
     colunaAcoes
   );
 
@@ -83,7 +105,7 @@ async function carregarProdutosPainel() {
     if (!Array.isArray(produtos) || produtos.length === 0) {
       const linha = document.createElement('tr');
       const coluna = document.createElement('td');
-      coluna.colSpan = 5;
+      coluna.colSpan = 6;
       coluna.textContent = 'Nenhum produto cadastrado.';
       linha.appendChild(coluna);
       corpoTabela.appendChild(linha);
@@ -94,7 +116,7 @@ async function carregarProdutosPainel() {
       corpoTabela.appendChild(criarLinhaProduto(produto));
     });
   } catch (erro) {
-    corpoTabela.innerHTML = '<tr><td colspan="5">Erro ao carregar produtos.</td></tr>';
+    corpoTabela.innerHTML = '<tr><td colspan="6">Erro ao carregar produtos.</td></tr>';
   }
 }
 
@@ -106,11 +128,12 @@ async function salvarProduto(evento) {
   const categoria = document.getElementById('categoria').value.trim();
   const preco = document.getElementById('preco').value.trim();
   const descricao = document.getElementById('descricao').value.trim();
+  const imagem = document.getElementById('imagem').value.trim();
 
   limparMensagemFormulario();
 
   if (!nome || !categoria || !preco || !descricao) {
-    exibirMensagemFormulario('Preencha todos os campos.', 'error');
+    exibirMensagemFormulario('Preencha todos os campos obrigatorios.', 'error');
     return;
   }
 
@@ -124,7 +147,8 @@ async function salvarProduto(evento) {
         nome,
         categoria,
         preco,
-        descricao
+        descricao,
+        imagem
       })
     });
 
@@ -160,7 +184,7 @@ async function excluirProduto(id) {
       return;
     }
 
-    exibirMensagemFormulario('Produto excluído com sucesso.', 'success');
+    exibirMensagemFormulario('Produto excluido com sucesso.', 'success');
     await carregarProdutosPainel();
   } catch (erro) {
     exibirMensagemFormulario('Erro ao excluir produto.', 'error');

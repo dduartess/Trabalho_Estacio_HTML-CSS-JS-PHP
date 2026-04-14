@@ -1,30 +1,30 @@
 [
-  {
-    "id": 1,
-    "nome": "Arroz Tipo 1 - 5kg",
-    "categoria": "Grãos",
-    "preco": 28.9,
-    "descricao": "Produto essencial para o dia a dia, com rendimento e qualidade."
-  },
-  {
-    "id": 2,
-    "nome": "Feijão Carioca - 1kg",
-    "categoria": "Grãos",
-    "preco": 8.99,
-    "descricao": "Selecionado para manter sabor, praticidade e economia na compra."
-  },
-  {
-    "id": 3,
-    "nome": "Óleo de Soja - 900ml",
-    "categoria": "Cozinha",
-    "preco": 7.49,
-    "descricao": "Ideal para o preparo das refeições do dia a dia."
-  },
-  {
-    "id": 4,
-    "nome": "Café Torrado e Moído - 500g",
-    "categoria": "Bebidas",
-    "preco": 15.9,
-    "descricao": "Perfeito para começar o dia com mais sabor."
-  }
+    {
+        "id": 1,
+        "nome": "Arroz Tipo 1 - 5kg",
+        "categoria": "Grãos",
+        "preco": 28.9,
+        "descricao": "Produto essencial para o dia a dia, com rendimento e qualidade."
+    },
+    {
+        "id": 2,
+        "nome": "Feijão Carioca - 1kg",
+        "categoria": "Grãos",
+        "preco": 8.99,
+        "descricao": "Selecionado para manter sabor, praticidade e economia na compra."
+    },
+    {
+        "id": 3,
+        "nome": "Óleo de Soja - 900ml",
+        "categoria": "Cozinha",
+        "preco": 7.49,
+        "descricao": "Ideal para o preparo das refeições do dia a dia."
+    },
+    {
+        "id": 4,
+        "nome": "Café Torrado e Moído - 500g",
+        "categoria": "Bebidas",
+        "preco": 15.9,
+        "descricao": "Perfeito para começar o dia com mais sabor."
+    }
 ]

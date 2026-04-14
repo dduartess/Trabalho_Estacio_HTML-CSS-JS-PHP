@@ -15,18 +15,28 @@ if (
     http_response_code(400);
     echo json_encode([
         'sucesso' => false,
-        'mensagem' => 'Dados inválidos.'
+        'mensagem' => 'Dados invalidos.'
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
 $preco = filter_var($dadosRecebidos['preco'], FILTER_VALIDATE_FLOAT);
+$imagem = trim($dadosRecebidos['imagem'] ?? '');
 
 if ($preco === false || $preco <= 0) {
     http_response_code(400);
     echo json_encode([
         'sucesso' => false,
-        'mensagem' => 'Informe um preço válido.'
+        'mensagem' => 'Informe um preco valido.'
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+if ($imagem !== '' && filter_var($imagem, FILTER_VALIDATE_URL) === false) {
+    http_response_code(400);
+    echo json_encode([
+        'sucesso' => false,
+        'mensagem' => 'Informe uma URL de imagem valida.'
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -51,7 +61,8 @@ $novoProduto = [
     'nome' => trim($dadosRecebidos['nome']),
     'categoria' => trim($dadosRecebidos['categoria']),
     'preco' => (float) $preco,
-    'descricao' => trim($dadosRecebidos['descricao'])
+    'descricao' => trim($dadosRecebidos['descricao']),
+    'imagem' => $imagem
 ];
 
 $produtos[] = $novoProduto;

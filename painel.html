@@ -9,15 +9,15 @@
 <body class="panel-page">
   <header class="site-header">
     <div class="container header-content">
-      <a class="brand" href="index.html" aria-label="Voltar para a página inicial">
+      <a class="brand" href="index.html" aria-label="Voltar para a pagina inicial">
         <div class="brand-badge">MSJ</div>
         <div>
           <h1>Painel Administrativo</h1>
-          <p>Gerenciamento dinâmico de produtos</p>
+          <p>Gerenciamento dinamico de produtos</p>
         </div>
       </a>
 
-      <nav class="main-nav" aria-label="Navegação do painel">
+      <nav class="main-nav" aria-label="Navegacao do painel">
         <a href="index.html">Voltar ao site</a>
       </nav>
     </div>
@@ -44,14 +44,24 @@
             </div>
 
             <div class="form-group">
-              <label for="preco">Preço</label>
+              <label for="preco">Preco</label>
               <input type="number" step="0.01" min="0.01" id="preco" name="preco" required>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="descricao">Descrição</label>
+            <label for="descricao">Descricao</label>
             <textarea id="descricao" name="descricao" rows="4" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="imagem">URL da imagem</label>
+            <input
+              type="url"
+              id="imagem"
+              name="imagem"
+              placeholder="https://exemplo.com/imagem.jpg"
+            >
           </div>
 
           <div class="form-actions">
@@ -74,9 +84,10 @@
               <tr>
                 <th>Produto</th>
                 <th>Categoria</th>
-                <th>Preço</th>
-                <th>Descrição</th>
-                <th>Ações</th>
+                <th>Preco</th>
+                <th>Descricao</th>
+                <th>Imagem</th>
+                <th>Acoes</th>
               </tr>
             </thead>
             <tbody id="tabela-produtos"></tbody>

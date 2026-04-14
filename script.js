@@ -1,3 +1,5 @@
+const PLACEHOLDER_IMAGEM = 'https://via.placeholder.com/640x420?text=Sem+Imagem';
+
 function formatarPreco(valor) {
   return Number(valor).toLocaleString('pt-BR', {
     style: 'currency',
@@ -27,13 +29,27 @@ function esconderMensagemProdutos() {
   mensagem.textContent = '';
 }
 
+function criarImagemProduto(produto) {
+  const image = document.createElement('img');
+  image.className = 'product-image';
+  image.src = produto.imagem || PLACEHOLDER_IMAGEM;
+  image.alt = produto.nome;
+  image.loading = 'lazy';
+
+  image.addEventListener('error', () => {
+    if (image.src !== PLACEHOLDER_IMAGEM) {
+      image.src = PLACEHOLDER_IMAGEM;
+    }
+  });
+
+  return image;
+}
+
 function criarCardProduto(produto) {
   const card = document.createElement('article');
   card.className = 'product-card';
 
-  const image = document.createElement('div');
-  image.className = 'product-image';
-  image.textContent = produto.nome;
+  const image = criarImagemProduto(produto);
 
   const content = document.createElement('div');
   content.className = 'product-content';
@@ -94,7 +110,7 @@ async function carregarProdutos() {
   } catch (erro) {
     container.innerHTML = '';
     exibirMensagemProdutos(
-      'Não foi possível carregar os produtos. Execute o projeto em um servidor com PHP, como http://localhost:8000.'
+      'Nao foi possivel carregar os produtos. Execute o projeto em um servidor com PHP, como http://localhost:8000.'
     );
   }
 }
